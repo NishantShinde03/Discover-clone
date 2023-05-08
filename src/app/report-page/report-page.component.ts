@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ShimmerEffectService } from '../services/shimmer-effect/shimmer-effect.service';
+import { OpenDatasetSelectorService } from '../services/open-dataset-selector/open-dataset-selector.service';
 
 @Component({
   selector: 'app-report-page',
@@ -20,7 +21,8 @@ export class ReportPageComponent {
   moreIconDisable: boolean = false;
   expandCard: boolean = false;
 
-  constructor(public shimmerService: ShimmerEffectService,) { }
+  constructor(public shimmerService: ShimmerEffectService,
+              public openDatasetSelectorService: OpenDatasetSelectorService) { }
 
   headerMoreOptions = [
     { "value": "Save", "class": 'fa fa-print' },
