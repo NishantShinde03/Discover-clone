@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { OpenDatasetSelectorService } from './services/open-dataset-selector/open-dataset-selector.service';
 
 @Component({
   selector: 'app-root',
@@ -6,10 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  isDatasetOpen:boolean=false;
+  // isDatasetOpen:boolean=false;
+  title = 'Project_demo';
 
-  openData():void{
-    this.isDatasetOpen=true;
+  constructor(public openDatasetSelectorService: OpenDatasetSelectorService) {}
+
+
+  // openData():void{
+  //   this.isDatasetOpen=true;
   }
-}
 

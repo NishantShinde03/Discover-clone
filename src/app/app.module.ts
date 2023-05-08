@@ -21,7 +21,7 @@ import { ReportPageFooterComponent } from './report-page/report-page-footer/repo
     DataSummaryComponent,
     DatasetSelectorComponent,
     BrandbarComponent,
-    ReportPageFooterComponent
+    ReportPageFooterComponent,
     ReportPageComponent
   ],
   imports: [

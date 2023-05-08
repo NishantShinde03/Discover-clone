@@ -1,6 +1,6 @@
 <app-brandbar></app-brandbar>
-<app-report-page></app-report-page>
-<app-data-summary></app-data-summary>
-<button (click)="openData()">open data selector</button>
-<app-dataset-selector *ngIf="isDatasetOpen" (closedataset)="isDatasetOpen=$event"></app-dataset-selector>
+<!-- <app-report-page></app-report-page> -->
+<!-- <app-data-summary></app-data-summary> -->
+<app-report-page *ngIf="openDatasetSelectorService.isOnBuildATable"></app-report-page>
+<div class="nothing" *ngIf="!openDatasetSelectorService.isOnBuildATable">Oops<br>Nothing to show</div>
 
