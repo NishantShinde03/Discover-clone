@@ -5,10 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DataSummaryComponent } from './data-summary/data-summary.component';
 import { DatasetSelectorComponent } from './dataset-selector/dataset-selector.component';
+import { MatIconModule } from '@angular/material/icon';
 import { BrandbarComponent } from './brandbar/brandbar.component';
 import { ReportPageComponent } from './report-page/report-page.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { RouterModule } from '@angular/router';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatIconModule,
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot([
