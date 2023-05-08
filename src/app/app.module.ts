@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DataSummaryComponent } from './data-summary/data-summary.component';
 import { DatasetSelectorComponent } from './dataset-selector/dataset-selector.component';
+import { BrandbarComponent } from './brandbar/brandbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DataSummaryComponent,
-    DatasetSelectorComponent
+    DatasetSelectorComponent,
+    BrandbarComponent
   ],
   imports: [
     BrowserModule,
