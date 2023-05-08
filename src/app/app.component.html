@@ -1,0 +1,2 @@
+<button (click)="openData()">open data selector</button>
+<app-dataset-selector *ngIf="isDatasetOpen" (closedataset)="isDatasetOpen=$event"></app-dataset-selector>
