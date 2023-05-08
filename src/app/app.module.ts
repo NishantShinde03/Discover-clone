@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { DataSummaryComponent } from './data-summary/data-summary.component';
 import { DatasetSelectorComponent } from './dataset-selector/dataset-selector.component';
 import { BrandbarComponent } from './brandbar/brandbar.component';
+import { ReportPageComponent } from './report-page/report-page.component';
+import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
@@ -14,10 +16,12 @@ import { RouterModule } from '@angular/router';
     DataSummaryComponent,
     DatasetSelectorComponent,
     BrandbarComponent,
+    ReportPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     HttpClientModule,
     RouterModule.forRoot([
       { path: 'home', component: AppComponent },
