@@ -10,6 +10,9 @@ import { BrandbarComponent } from './brandbar/brandbar.component';
 import { ReportPageComponent } from './report-page/report-page.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { ReportPageFooterComponent } from './report-page/report-page-footer/report-page-footer.component';
+
 
 
 @NgModule({
@@ -18,6 +21,7 @@ import { RouterModule } from '@angular/router';
     DataSummaryComponent,
     DatasetSelectorComponent,
     BrandbarComponent,
+    ReportPageFooterComponent
     ReportPageComponent
   ],
   imports: [
@@ -26,6 +30,7 @@ import { RouterModule } from '@angular/router';
     MatIconModule,
     FormsModule,
     HttpClientModule,
+    NgxSkeletonLoaderModule,
     RouterModule.forRoot([
       { path: 'home', component: AppComponent },
       { path: 'monitorMyBusiness', component: AppComponent },
