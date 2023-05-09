@@ -210,7 +210,7 @@ export class ReportPageComponent {
     }
     this.showRunButton = false;
     this.showBottomBar = true;
-    this.shimmerService.shimmerEffect();
+    this.shimmerService.shimmerEffect(); 
   }
 
 }
