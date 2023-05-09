@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
+
 import { ShimmerEffectService } from '../services/shimmer-effect/shimmer-effect.service';
 
 @Component({
@@ -7,15 +8,13 @@ import { ShimmerEffectService } from '../services/shimmer-effect/shimmer-effect.
   styleUrls: ['./bottom-bar.component.scss']
 })
 export class BottomBarComponent {
-  showBottomBar: boolean=false;
-  showRunButton: boolean=false;
+  @Output() cancel = new EventEmitter<void>();
+
 constructor(
   public shimmerService: ShimmerEffectService) { }
 
   cancelButton() {
-    this.showBottomBar = false; 
-    this.showRunButton = true; 
-    
+    this.cancel.emit();
   }
 
 }
