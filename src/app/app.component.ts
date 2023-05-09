@@ -8,6 +8,5 @@ import { OpenDatasetSelectorService } from './services/open-dataset-selector/ope
 })
 export class AppComponent {
   title = 'NIQ Discover';
-
   constructor(public openDatasetSelectorService: OpenDatasetSelectorService) {}
 }
