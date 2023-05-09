@@ -31,6 +31,8 @@ export class ReportPageComponent {
     { "value": "Edit Report layout", "class": 'fa fa-retweet' }
   ];
 
+  showRunButton: boolean = true;
+
   undoClick() {
     this.redo = this.reportTitle;
     this.reportTitle = this.undo;
@@ -60,4 +62,9 @@ export class ReportPageComponent {
     this.undoIconDisable = false;
     this.oldReportTitle = this.reportTitle;
   }
+  RunButton() {
+    this.showRunButton = false;
+  }
+  
+
 }
