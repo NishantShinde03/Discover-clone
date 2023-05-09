@@ -63,6 +63,10 @@ export class SidepanelComponent {
     }
   }
 
+  trash(item:string,select:string){
+
+  }
+  
   plus(item:string,select:string){
     this.selectedList[item][1][select] = true
   }
