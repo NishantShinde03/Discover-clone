@@ -68,7 +68,9 @@
         </div>
     </div>
     <div class="Run-Button-container">
-        <button class="Run-Button">Run ➤</button>
+        <button class="Run-Button" [disabled]="shimmerService.isloading"
+        [style.background]="shimmerService.isloading? '#bbccdd' : 'blue'">Run ➤
+        </button>
     </div>
 </div>
 
