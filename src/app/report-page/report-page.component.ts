@@ -23,6 +23,53 @@ export class ReportPageComponent {
   addcardIconDisable: boolean = false;
   moreIconDisable: boolean = false;
   expandCard: boolean = false;
+  preview: boolean = true;
+  rowData: any;
+  colData!: ColDef[];
+
+  ngOnInit(): void {
+    this.http
+      .get('../../assets/jsonfiles/97210-RB_RULE.json')
+      .subscribe((data) => {
+        this.rowData = data;
+      });
+    this.colData = this.getColumns();
+  }
+
+  getColumns() {
+    return [
+      {
+        field: 'market',
+        headerName: 'Markets',
+        headerClass: 'header-cell',
+        cellClass: 'body-cell',
+        width: 137,
+      },
+      {
+        field: 'period',
+        headerName: 'Periods',
+        headerClass: 'header-cell',
+        cellClass: 'body-cell',
+        width: 134,
+      },
+      {
+        field: 'product',
+        headerName: 'Products',
+        headerClass: 'header-cell',
+        cellClass: 'body-cell',
+        width: 205,
+      },
+      {
+        field: '$',
+        headerClass: 'header-cell',
+        cellClass: 'body-cell',
+        width: 180,
+
+        valueFormatter: this.factFormatter.bind(this),
+      },
+    ];
+  }
+
   showChartList: boolean = false;
   chartOptions: { class: string; name: string }[] = [
     { class: 'bi bi-table', name: 'Table' },
@@ -31,48 +78,6 @@ export class ReportPageComponent {
     { class: 'bi bi-bar-chart-steps', name: 'Bar chart' },
     { class: 'bi bi-pie-chart-fill', name: 'Pie chart' },
     { class: 'bi bi-border-inner', name: 'Scatter chart' },
-  ];
-  preview: boolean = true;
-  rowData: any;
-  // colData!: ColDef[];
-
-  ngOnInit(): void {
-    this.http
-      .get('../../assets/jsonfiles/97210-RB_RULE.json')
-      .subscribe((data) => {
-        this.rowData = data;
-      });
-    // this.cardList[0].columns = this.getColumns();
-  }
-
-  colData = [
-    {
-      field: 'market',
-      headerName: 'Markets',
-      headerClass: 'header-cell',
-      cellClass: 'body-cell',
-      width: 137,
-    },
-    {
-      field: 'period',
-      headerName: 'Periods',
-      headerClass: 'header-cell',
-      cellClass: 'body-cell',
-      width: 134,
-    },
-    {
-      field: 'product',
-      headerName: 'Products',
-      headerClass: 'header-cell',
-      cellClass: 'body-cell',
-      width: 205,
-    },
-    {
-      field: '$',
-      headerClass: 'header-cell',
-      cellClass: 'body-cell',
-      width: 180,
-    },
   ];
 
   constructor(
@@ -100,7 +105,7 @@ export class ReportPageComponent {
   // ];
 
   showBottomBar = false;
-  addCard(type: string): void {}
+  addCard(type: string): void { }
   showRunButton: boolean = true;
 
   undoClick() {
@@ -134,17 +139,24 @@ export class ReportPageComponent {
     this.oldReportTitle = this.reportTitle;
   }
 
-  valFormatter(params: any) {
+  factFormatter(params: any) {
     if (this.preview) {
       return '###'
     }
-    return params.value
+    const numberValue = parseFloat(params.value);
+    const formattedValue = numberValue.toLocaleString('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    });
+    return formattedValue;
   }
 
   RunButton() {
     this.showRunButton = false;
     this.showBottomBar = true;
-    this.shimmerService.shimmerEffect(); 
+    this.shimmerService.shimmerEffect();
   }
 
 }
