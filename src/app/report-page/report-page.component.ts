@@ -30,10 +30,9 @@ export class ReportPageComponent {
     { class: 'bi bi-border-inner', name: 'Scatter chart' },
   ];
 
-  constructor(
-    public shimmerService: ShimmerEffectService,
-    public openDatasetSelectorService: OpenDatasetSelectorService
-  ) {}
+
+  constructor(public openDatasetSelectorService: OpenDatasetSelectorService,
+    public shimmerService: ShimmerEffectService) { }
 
   headerMoreOptions = [
     { value: 'Save', class: 'fa fa-print' },
@@ -43,6 +42,7 @@ export class ReportPageComponent {
   ];
 
   addCard(type: string): void {}
+  showRunButton: boolean = true;
 
   undoClick() {
     this.redo = this.reportTitle;
@@ -73,4 +73,9 @@ export class ReportPageComponent {
     this.undoIconDisable = false;
     this.oldReportTitle = this.reportTitle;
   }
+  RunButton() {
+    this.showRunButton = false;
+  }
+  
+
 }
