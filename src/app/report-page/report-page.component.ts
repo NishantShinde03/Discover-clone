@@ -21,8 +21,8 @@ export class ReportPageComponent {
   moreIconDisable: boolean = false;
   expandCard: boolean = false;
 
-  constructor(public shimmerService: ShimmerEffectService,
-              public openDatasetSelectorService: OpenDatasetSelectorService) { }
+  constructor(public openDatasetSelectorService: OpenDatasetSelectorService,
+    public shimmerService: ShimmerEffectService) { }
 
   headerMoreOptions = [
     { "value": "Save", "class": 'fa fa-print' },
