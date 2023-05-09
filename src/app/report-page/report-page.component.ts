@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { ShimmerEffectService } from '../services/shimmer-effect/shimmer-effect.service';
+import { HttpClient } from '@angular/common/http';
+import { ColDef } from 'ag-grid-community';
 import { OpenDatasetSelectorService } from '../services/open-dataset-selector/open-dataset-selector.service';
+import { SidepanelService } from '../services/sidepanel/sidepanel.service';
 
 @Component({
   selector: 'app-report-page',
@@ -20,6 +23,53 @@ export class ReportPageComponent {
   addcardIconDisable: boolean = false;
   moreIconDisable: boolean = false;
   expandCard: boolean = false;
+  preview: boolean = true;
+  rowData: any;
+  colData!: ColDef[];
+
+  ngOnInit(): void {
+    this.http
+      .get('../../assets/jsonfiles/97210-RB_RULE.json')
+      .subscribe((data) => {
+        this.rowData = data;
+      });
+    this.colData = this.getColumns();
+  }
+
+  getColumns() {
+    return [
+      {
+        field: 'market',
+        headerName: 'Markets',
+        headerClass: 'header-cell',
+        cellClass: 'body-cell',
+        width: 137,
+      },
+      {
+        field: 'period',
+        headerName: 'Periods',
+        headerClass: 'header-cell',
+        cellClass: 'body-cell',
+        width: 134,
+      },
+      {
+        field: 'product',
+        headerName: 'Products',
+        headerClass: 'header-cell',
+        cellClass: 'body-cell',
+        width: 205,
+      },
+      {
+        field: '$',
+        headerClass: 'header-cell',
+        cellClass: 'body-cell',
+        width: 180,
+
+        valueFormatter: this.factFormatter.bind(this),
+      },
+    ];
+  }
+
   showChartList: boolean = false;
   chartOptions: { class: string; name: string }[] = [
     { class: 'bi bi-table', name: 'Table' },
@@ -30,9 +80,11 @@ export class ReportPageComponent {
     { class: 'bi bi-border-inner', name: 'Scatter chart' },
   ];
 
-
-  constructor(public openDatasetSelectorService: OpenDatasetSelectorService,
-    public shimmerService: ShimmerEffectService) { }
+  constructor(
+    public http: HttpClient,
+    public openDatasetSelectorService: OpenDatasetSelectorService,
+    public shimmerService: ShimmerEffectService,
+    public sidepanelService: SidepanelService) { }
 
   headerMoreOptions = [
     { value: 'Save', class: 'fa fa-print' },
@@ -41,8 +93,19 @@ export class ReportPageComponent {
     { value: 'Edit Report layout', class: 'fa fa-retweet' },
   ];
 
+  // rowData = [
+  //   { make: 'Toyota', model: 'Celica', price: 35000 },
+  //   { make: 'Ford', model: 'Mondeo', price: 32000 },
+  //   { make: 'Porsche', model: 'Boxster', price: 72000 },
+  // ];
+  // colData = [
+  //   { field: 'make' },
+  //   { field: 'model' },
+  //   { field: 'price', valueFormatter: this.valFormatter.bind(this), },
+  // ];
+
   showBottomBar = false;
-  addCard(type: string): void {}
+  addCard(type: string): void { }
   showRunButton: boolean = true;
 
   undoClick() {
@@ -69,16 +132,31 @@ export class ReportPageComponent {
     this.undoIconDisable = false;
     this.redoIconDisable = true;
   }
+
   saveInputText() {
     this.undo = this.oldReportTitle;
     this.undoIconDisable = false;
     this.oldReportTitle = this.reportTitle;
   }
+
+  factFormatter(params: any) {
+    if (this.preview) {
+      return '###'
+    }
+    const numberValue = parseFloat(params.value);
+    const formattedValue = numberValue.toLocaleString('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    });
+    return formattedValue;
+  }
+
   RunButton() {
     this.showRunButton = false;
     this.showBottomBar = true;
-    this.shimmerService.shimmerEffect(); 
-
+    this.shimmerService.shimmerEffect();
   }
 
 }

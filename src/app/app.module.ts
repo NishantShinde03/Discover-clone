@@ -12,6 +12,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { ReportPageFooterComponent } from './report-page/report-page-footer/report-page-footer.component';
+import { AgGridModule } from 'ag-grid-angular';
+import { SidepanelComponent } from './sidepanel/sidepanel.component';
 import { BottomBarComponent } from './bottom-bar/bottom-bar.component';
 
 @NgModule({
@@ -22,6 +24,7 @@ import { BottomBarComponent } from './bottom-bar/bottom-bar.component';
     BrandbarComponent,
     ReportPageFooterComponent,
     ReportPageComponent,
+    SidepanelComponent,
     BottomBarComponent,
   ],
   imports: [
@@ -31,6 +34,7 @@ import { BottomBarComponent } from './bottom-bar/bottom-bar.component';
     FormsModule,
     HttpClientModule,
     NgxSkeletonLoaderModule,
+    AgGridModule,
     RouterModule.forRoot([
       { path: 'home', component: AppComponent },
       { path: 'monitorMyBusiness', component: AppComponent },
