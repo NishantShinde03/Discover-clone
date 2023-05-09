@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ShimmerEffectService } from '../services/shimmer-effect/shimmer-effect.service';
 import { OpenDatasetSelectorService } from '../services/open-dataset-selector/open-dataset-selector.service';
+import { SidepanelService } from '../services/sidepanel/sidepanel.service';
 
 @Component({
   selector: 'app-report-page',
@@ -30,9 +31,8 @@ export class ReportPageComponent {
     { class: 'bi bi-border-inner', name: 'Scatter chart' },
   ];
 
-
   constructor(public openDatasetSelectorService: OpenDatasetSelectorService,
-    public shimmerService: ShimmerEffectService) { }
+    public shimmerService: ShimmerEffectService,public sidepanelService: SidepanelService) { }
 
   headerMoreOptions = [
     { value: 'Save', class: 'fa fa-print' },
