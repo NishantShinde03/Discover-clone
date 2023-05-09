@@ -11,5 +11,4 @@ export class OpenDatasetSelectorService {
   appliedDataset: string = '';
   isOnBuildATable: boolean = true;
   isFirst: Boolean = true;
-
 }

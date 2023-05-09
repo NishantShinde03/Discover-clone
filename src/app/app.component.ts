@@ -7,13 +7,13 @@ import { OpenDatasetSelectorService } from './services/open-dataset-selector/ope
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  // isDatasetOpen:boolean=false;
   title = 'Project_demo';
 
   constructor(public openDatasetSelectorService: OpenDatasetSelectorService) {}
-
-
-  // openData():void{
-  //   this.isDatasetOpen=true;
   }
+  isDatasetOpen:boolean=false;
 
+  openData():void{
+    this.isDatasetOpen=true;
+  }
+}

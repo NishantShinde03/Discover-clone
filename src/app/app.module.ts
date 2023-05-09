@@ -14,14 +14,13 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { ReportPageFooterComponent } from './report-page/report-page-footer/report-page-footer.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
     DataSummaryComponent,
     DatasetSelectorComponent,
     BrandbarComponent,
-    ReportPageFooterComponent,
+    ReportPageFooterComponent
     ReportPageComponent
   ],
   imports: [

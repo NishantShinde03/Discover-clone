@@ -22,7 +22,7 @@ export class ReportPageComponent {
   expandCard: boolean = false;
 
   constructor(public shimmerService: ShimmerEffectService,
-    public openDatasetSelectorService: OpenDatasetSelectorService) { }
+              public openDatasetSelectorService: OpenDatasetSelectorService) { }
 
   headerMoreOptions = [
     { "value": "Save", "class": 'fa fa-print' },
