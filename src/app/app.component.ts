@@ -7,6 +7,5 @@ import { OpenDatasetSelectorService } from './services/open-dataset-selector/ope
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'NIQ Discover';
   constructor(public openDatasetSelectorService: OpenDatasetSelectorService) {}
 }
