@@ -32,6 +32,7 @@ export class ReportPageComponent {
   ];
 
   showRunButton: boolean = true;
+  showBottomBar = false;
 
   undoClick() {
     this.redo = this.reportTitle;
@@ -64,7 +65,9 @@ export class ReportPageComponent {
   }
   RunButton() {
     this.showRunButton = false;
+    this.showBottomBar = true;
+    this.shimmerService.shimmerEffect(); 
+
   }
-  
 
 }
