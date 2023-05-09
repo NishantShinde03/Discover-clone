@@ -7,7 +7,15 @@ import { ShimmerEffectService } from '../services/shimmer-effect/shimmer-effect.
   styleUrls: ['./bottom-bar.component.scss']
 })
 export class BottomBarComponent {
+  showBottomBar: boolean=false;
+  showRunButton: boolean=false;
 constructor(
   public shimmerService: ShimmerEffectService) { }
+
+  cancelButton() {
+    this.showBottomBar = false; 
+    this.showRunButton = true; 
+    
+  }
 
 }
