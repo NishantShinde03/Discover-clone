@@ -103,9 +103,7 @@ export class LinechartDataServiceService {
               style: {
                 fontSize: '12px',
               },
-              formatter: function () {
-                return '##';
-              },
+              
             },
           },
           series: this.previewBeerDataSeries,
@@ -139,6 +137,8 @@ export class LinechartDataServiceService {
 
   createNewChart() {
     this.chartOptions.series = this.previewBeerDataSeries;
+    this.chartOptions.yAxis.labels.formatter= function () {return '##';};
+    this.chartOptions.tooltip.formatter=function () {return '##';};
     this.lineChart = new Chart(this.chartOptions);
     return this.lineChart;
   }

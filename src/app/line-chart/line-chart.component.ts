@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { LinechartDataServiceService } from '../services/linechart-data-service.service';
 import { Chart } from 'highcharts';
 
+
 @Component({
   selector: 'app-line-chart',
   templateUrl: './line-chart.component.html',

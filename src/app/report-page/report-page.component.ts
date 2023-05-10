@@ -146,7 +146,6 @@ export class ReportPageComponent {
         showActualFact: false,
         viewStatus: 'preview',
       });
-      this.lineChartDataService.createNewChart();
     }
     this.showChartList = false;
     setTimeout(() => {
@@ -212,7 +211,7 @@ export class ReportPageComponent {
       } else if (!i.showActualFact && i.type === 'lineChart') {
         i.showActualFact = true;
         i.viewStatus = 'running';
-        this.lineChartDataService.renderLineChart();
+        i.columns = this.lineChartDataService.renderLineChart();
       } else {
         i.viewStatus = 'actual';
       }
@@ -229,7 +228,12 @@ export class ReportPageComponent {
       if (i.viewStatus === 'running') {
         i.viewStatus = 'preview';
         i.showActualFact = false;
-        i.columns = this.getColumns(false);
+        if(i.type==='table'){
+          i.columns = this.getColumns(false);
+        }else if(i.type==='lineChart'){
+        i.columns= this.lineChartDataService.createNewChart();
+        }
+        
       }
     }
   }
