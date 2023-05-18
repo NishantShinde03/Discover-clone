@@ -10,6 +10,7 @@ import { SidepanelService } from '../services/sidepanel/sidepanel.service';
 export class SidepanelComponent {
 
   content: any
+  trueSelectCount: number = 0;
   constructor(public sidepanelService : SidepanelService,
     public http: HttpClient
     ){
@@ -21,8 +22,22 @@ export class SidepanelComponent {
     this.http.get('../../assets/Json/content.json').subscribe((res)=>{
       this.content = res; 
     });
+    for (let select of this.sidepanelService.getKeys('Products')) {
+        
+      if (this.sidepanelService.selectedList['Products'][1][select] === true) {
+        this.trueSelectCount++;
+      }
+    }
   }
-
+  count = 0;
+  trueCount(){
+    this.count = 0
+    for(let key of Object.keys(this.sidepanelService.selectedList['Products'][1])) {
+      if(this.sidepanelService.selectedList['Products'][1][key]) {
+        this.count++
+      }
+    }
+  }
   add(item:string){
     this.sidepanelService.add = item
     this.sidepanelService.currentSelected = ""
