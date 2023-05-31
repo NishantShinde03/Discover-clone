@@ -12,10 +12,11 @@
             "Beer":true,
             "Cola":false,
             "Pepsi":false,
-            "Coke":true,
+            "Coke":false,
             "ThumbsUp":false,
-            "Sprite":true,
-            "RebBull":false}
+            "Sprite":false,
+            "RebBull":false,
+            "Noodles":false}
         ],
 
     "Markets": [
